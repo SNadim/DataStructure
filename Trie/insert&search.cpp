@@ -90,6 +90,28 @@ class Trie {
     {
         return searchUtil(root, word);
     }
+
+void removeUtil(TrieNode* root, string word)
+        {
+            if(word.length() == 0)
+            {
+                root->isTerminal = false;
+                return;
+            }
+            
+            int index = word[0] - 'A';
+            
+            if(root->childreen[index] == NULL)
+            {
+                return;
+            }
+            
+            removeUtil(root->childreen[index], word.substr(1));
+        }
+        void removeWord(string word)
+        {
+            removeUtil(root, word);
+        }
     
 };
 
